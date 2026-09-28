@@ -100,8 +100,5 @@ npm run build
 
 ## Team
 
-- **R Nandhana** — Roll No: 689
-- **Avinash J** — Roll No: 695
-
-*Department of Computer Science / Information Technology*  
-*Cloud & DevOps Essentials Course*
+- **R Nandhana** (689)
+- **Avinash J** (695)
