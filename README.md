@@ -1,175 +1,107 @@
-# ☁️ CLOUD CITY — Build Your Own Cloud
-### Interactive Cloud & DevOps Essentials Classroom Simulation
+# Cloud City — Build Your Own Cloud
+### Cloud & DevOps Essentials Project
 
-> An engaging, visual, and practical cloud-building simulation designed for classroom activities, faculty demonstrations, and lab assessments.
-
----
-
-## 👥 Developed By
-- **R NANDHANA (689)**
-- **AVINASH J (695)**
-
-*Designed for Cloud & DevOps Essentials Coursework.*
+**Developed by:**
+- R Nandhana (689)
+- Avinash J (695)
 
 ---
 
-## 🎯 About Cloud City
+## Project Overview
 
-Unlike traditional multiple-choice quizzes, flashcard tools (Kahoot/Quizizz), or complex coding simulators, **Cloud City** is an authentic architectural simulation:
+Cloud City is an interactive cloud architecture simulator designed for our Cloud & DevOps Essentials coursework. 
 
-> **"The student is given a fictional company (QuickCart) and must build its cloud infrastructure by choosing appropriate cloud components. Their choices affect COST, PERFORMANCE and RELIABILITY."**
+Instead of traditional multiple-choice questions or quizzes, this project lets students learn cloud concepts through hands-on decision making. The student acts as a cloud engineer tasked with designing the infrastructure for **QuickCart**, a growing shopping app preparing for a 50,000-user flash sale.
 
-The simulation can be understood within 30 seconds and easily presented to faculty, recruiters, or peers.
-
----
-
-## 🛒 The Scenario: QuickCart
-- **Company**: QuickCart (Fast-growing e-commerce retail platform)
-- **Baseline Load**: 10,000 normal shoppers
-- **Expected Growth / Flash Sale**: 50,000 concurrent shoppers (5× spike)
-- **Architectural Challenge**: Design a resilient infrastructure that sustains the flash sale without budget overrun or downtime!
+Every choice directly affects three core metrics:
+- **Cost (₹/month)**
+- **Performance (%)**
+- **Reliability (%)**
 
 ---
 
-## 🏗️ 4-Stage Architectural Decision Matrix
+## The Scenario: QuickCart Flash Sale
 
-1. **💻 Step 1: Compute**
-   - **Small Server**: ₹1,500/mo (1 vCPU, 2GB RAM) • Low Perf, Low Reliability
-   - **Medium Server**: ₹3,000/mo (2 vCPU, 8GB RAM) • Medium Perf, Medium Reliability
-   - **Large Server**: ₹6,000/mo (4 vCPU, 16GB RAM) • High Perf, Medium Reliability
-
-2. **💾 Step 2: Storage**
-   - **Local Disk**: ₹500/mo • NVMe instance storage, low cost, low scalability
-   - **Object Storage**: ₹1,200/mo • S3-compatible bucket, high scalability
-   - **Managed Database**: ₹2,500/mo • ACID transactions, multi-AZ high reliability
-
-3. **🌐 Step 3: Networking**
-   - **Direct Server Access**: ₹0/mo • Public IP direct to VM, single point of failure
-   - **Load Balancer**: ₹1,500/mo • Layer 7 traffic distributor, high availability
-   - **CDN**: ₹1,000/mo • Global edge caching, low-latency static asset delivery
-
-4. **📊 Step 4: Observability & Monitoring**
-   - **No Monitoring**: ₹0/mo • Zero incident awareness
-   - **Basic Monitoring**: ₹500/mo • Periodic CPU/RAM vitals
-   - **Monitoring + Alerts**: ₹1,000/mo • Real-time telemetry & proactive on-call alerts
+- **Current Load:** 10,000 active shoppers
+- **Peak Load:** 50,000 shoppers (5x sudden traffic surge)
+- **Objective:** Select the right combination of compute, storage, networking, and monitoring to survive the surge without crashing or exceeding budget.
 
 ---
 
-## 🚨 Flash Sale Traffic Spike & Evaluation
+## Simulation Workflow
 
-When the student completes the architecture, a **Traffic Surge (10k → 50k users)** triggers:
-- **Animated Stress Test**:
-  1. *Receiving traffic...*
-  2. *Scaling resources...*
-  3. *Checking response time...*
-- **Success Criteria**: Sustained without single points of failure (requires sufficient compute, load balancing, and reliable data storage).
-- **Failure Analysis**: Pinpoints exact root-cause bottlenecks (e.g. lack of load balancing or undersized server).
-- **Architect Profile Badge**:
-  - `💰 COST CONSCIOUS`
-  - `⚡ PERFORMANCE FOCUSED`
-  - `🛡️ RELIABILITY FOCUSED`
-  - `☁️ BALANCED CLOUD ARCHITECT`
+1. **Enter Student Name** — Stored locally in the browser to personalize scores and final reports.
+2. **Compute Selection** — Choose between Small (1 vCPU), Medium (2 vCPU), or Large (4 vCPU) instances based on traffic capacity.
+3. **Storage Tiering** — Select storage options: Local Disk (low cost, single point of failure), Object Storage (scalable image/file storage), or Managed Database (ACID compliance & backups).
+4. **Networking** — Choose Direct Server Access, Application Load Balancer, or add a Content Delivery Network (CDN) for caching.
+5. **Monitoring & Observability** — Configure No Monitoring, Basic Vitals, or Real-time Telemetry with automated alerts.
+6. **Dynamic Architecture Diagram** — An interactive SVG/HTML diagram updates in real-time to visualize the selected topology.
+7. **Traffic Spike Test** — A stress test simulates the 50,000-user flash sale with live progress checks.
+8. **Results & Feedback** — 
+   - If the architecture passes: Displays the final performance rating and architectural profile (e.g. Balanced Architect, Cost Conscious, High Reliability).
+   - If the architecture fails: Clearly explains the root cause (e.g., lack of a load balancer, undersized CPU, or disk bottleneck) so the student can redesign and try again.
 
 ---
 
-## 📂 Project Structure
+## DevOps Pipeline Connection
 
-```text
-cloud-city/
-├── index.html                   # HTML entry point with fonts & metadata
-├── package.json                 # Project dependencies & npm scripts
-├── postcss.config.js            # PostCSS configuration for Tailwind
-├── tailwind.config.js           # Tailwind CSS color palettes & animations
-├── vite.config.js               # Vite bundler configuration
-├── README.md                    # Project documentation & run guide
-└── src/
-    ├── main.jsx                 # React root DOM mount
-    ├── App.jsx                  # Main application state & view controller
-    ├── index.css                # Global Tailwind directives & glassmorphism
-    ├── data/
-    │   ├── componentsData.js    # Specs, costs, scoring formula, spike tests
-    │   └── docData.js           # Comprehensive academic lab documentation
-    └── components/
-        ├── Navbar.jsx           # Top header navigation & student identity
-        ├── LandingPage.jsx      # Hero banner, 4 pillars, how it works
-        ├── ScenarioCard.jsx     # QuickCart problem statement briefing
-        ├── BuilderWizard.jsx    # 4-step interactive selection flow
-        ├── OptionCard.jsx       # Individual hardware & tier selector
-        ├── ArchitectureView.jsx # Dynamic animated SVG/HTML topology
-        ├── LiveMetricsBar.jsx   # Real-time Cost, Perf, Rel score gauges
-        ├── TrafficSimulationModal.jsx # 3-stage traffic spike stress simulation
-        ├── ResultsView.jsx      # Success/Failure dashboard & DevOps lifecycle
-        ├── DocumentationModal.jsx # Full 8-point academic documentation
-        ├── NameModal.jsx        # Student name modal (localStorage backed)
-        └── Footer.jsx           # Developed by credits & legal statement
+The project demonstrates where cloud infrastructure connects with the DevOps lifecycle:
+
+```
+DEVELOP ──> BUILD ──> DEPLOY ──> MONITOR ──> IMPROVE
 ```
 
+- **Develop & Build:** Creating app logic and container packages.
+- **Deploy:** Provisioning cloud compute and storage resources.
+- **Monitor:** Catching latency spikes and system errors using monitoring tools.
+- **Improve:** Analyzing traffic data to optimize performance and monthly spending.
+
 ---
 
-## 🚀 How to Run Locally
+## Technologies Used
 
-### 1. Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
+- **Frontend:** React, JavaScript, HTML5, CSS3
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS (custom dark navy theme)
+- **Icons:** Lucide React
+- **State Management:** React Hooks (`useState`, `useEffect`) and browser `localStorage`
+- **Hosting:** Vercel
 
-### 2. Installation
-Open your terminal in the `cloud-city` folder:
-```bash
-npm install
-```
+---
 
-### 3. Launch Development Server
-```bash
-npm run dev
-```
-Open your browser and navigate to:
-`http://localhost:5173`
+## Running Locally
 
-### 4. Build for Production
+To run this project on your machine:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/RNandhana/cloud-city.git
+   cd cloud-city
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser at `http://localhost:5173`
+
+To create a production build:
 ```bash
 npm run build
 ```
-This generates the optimized production bundle in the `dist/` directory.
 
 ---
 
-## 🌐 Deploy to GitHub & Vercel
+## Team
 
-### Step A: Push to GitHub
-1. Initialize git and commit:
-```bash
-git init
-git add .
-git commit -m "feat: complete Cloud City simulation by R NANDHANA & AVINASH J"
-```
-2. Create a new repository on [GitHub](https://github.com/new).
-3. Link and push:
-```bash
-git branch -M main
-git remote add origin https://github.com/<YOUR_USERNAME>/cloud-city.git
-git push -u origin main
-```
+- **R Nandhana** — Roll No: 689
+- **Avinash J** — Roll No: 695
 
-### Step B: Deploy to Vercel (Zero Configuration)
-1. Go to [Vercel Dashboard](https://vercel.com/new).
-2. Click **"Import Project"** and select your GitHub repository `cloud-city`.
-3. Vercel automatically detects **Vite**:
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. Click **Deploy**.
-5. Your live URL will be ready in under 60 seconds (e.g. `https://cloud-city.vercel.app`).
-
----
-
-## 🔄 Where Does DevOps Fit?
-```text
-DEVELOP ──▶ BUILD ──▶ DEPLOY ──▶ MONITOR ──▶ IMPROVE
-```
-DevOps connects development and operations through automation, continuous delivery, monitoring, and continuous improvement. Cloud infrastructure provides the programmable foundation for this lifecycle.
-
----
-
-## 📜 License & Classroom Attribution
-Created for educational demonstration and lab presentation in **Cloud & DevOps Essentials**.
-- **Developers**: R NANDHANA (689), AVINASH J (695)
+*Department of Computer Science / Information Technology*  
+*Cloud & DevOps Essentials Course*
